@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import path from "node:path";
 import { cvssFromVector, entropy, fingerprint, normalizeSeverity, redactSecret, safeJoin } from "../server/lib/util.js";
 
 test("CVSS 3.1 base score", () => {
@@ -29,7 +30,8 @@ test("severity normalization and redaction", () => {
 });
 
 test("safeJoin blocks traversal", () => {
-  const root = "C:\\projects\\app";
+  const root = path.resolve("tmp-root");
   assert.ok(safeJoin(root, "src/index.js").endsWith("index.js"));
-  assert.throws(() => safeJoin(root, "..\\..\\etc\\passwd"));
+  assert.throws(() => safeJoin(root, path.join("..", "..", "etc", "passwd")));
+  if (process.platform === "win32") assert.throws(() => safeJoin(root, "..\\..\\etc\\passwd"));
 });
