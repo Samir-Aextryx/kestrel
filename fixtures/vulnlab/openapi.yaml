@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  title: Vulnlab API
+  version: 1.0.0
+servers:
+  - url: http://api.vulnlab.local
+paths:
+  /users/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ok
+  /users:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: ok
+components:
+  schemas:
+    User:
+      type: object
+      additionalProperties: true
+      properties:
+        name:
+          type: string
+        password:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string

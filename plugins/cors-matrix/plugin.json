@@ -1,0 +1,10 @@
+{
+  "id": "cors-matrix",
+  "name": "CORS Reflection Matrix",
+  "version": "1.0.0",
+  "description": "Probes CORS with hostile and null origins and reports reflection plus credential behavior.",
+  "entry": "index.js",
+  "permissions": ["net"],
+  "targetTypes": ["web", "api", "mixed"],
+  "enabled": true
+}

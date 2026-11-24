@@ -1,0 +1,55 @@
+{
+  "name": "kestrel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "KESTREL - autonomous, evidence-first security research platform",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,green \"node --watch server/index.js\" \"vite --host 127.0.0.1\"",
+    "build": "tsc -b && vite build",
+    "start": "node server/index.js",
+    "benchmark": "node scripts/benchmark.js",
+    "test": "node --test tests/*.test.js",
+    "seed": "node scripts/seed.js"
+  },
+  "keywords": [
+    "security",
+    "sast",
+    "fuzzing",
+    "agents",
+    "appsec"
+  ],
+  "license": "AGPL-3.0-only",
+  "dependencies": {
+    "@babel/parser": "^8.1.3",
+    "acorn": "^8.19.0",
+    "acorn-walk": "^8.3.5",
+    "adm-zip": "^0.6.1",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.3.0",
+    "lucide-react": "^1.79.0",
+    "multer": "^2.5.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.6",
+    "semver": "^7.8.6",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.3.0",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/semver": "^7.8.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "concurrently": "^10.0.7",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
+  }
+}

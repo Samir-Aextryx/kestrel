@@ -1,0 +1,13 @@
+node_modules/
+data/
+server/public/
+*.log
+.env
+work/
+outputs/
+dist/
+coverage/
+.kestrel/
+__pycache__/
+*.tsbuildinfo
+.DS_Store

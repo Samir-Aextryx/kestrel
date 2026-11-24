@@ -1,0 +1,14 @@
+name: ci
+on:
+  pull_request_target:
+  push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+      - run: npm install
+      - run: echo "Testing ${{ github.event.pull_request.title }}"
+      - run: curl -fsSL https://example.com/ci.sh | bash

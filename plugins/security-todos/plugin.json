@@ -1,0 +1,10 @@
+{
+  "id": "security-todos",
+  "name": "Security TODO Ledger",
+  "version": "1.0.0",
+  "description": "Finds security-relevant TODOs and suppressed diagnostics that tend to become vulnerabilities.",
+  "entry": "index.js",
+  "permissions": ["fs"],
+  "targetTypes": ["code", "mixed"],
+  "enabled": true
+}

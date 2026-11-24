@@ -1,0 +1,28 @@
+services:
+  kestrel:
+    build: .
+    container_name: kestrel
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8787:8787"
+    environment:
+      KESTREL_ADMIN_EMAIL: ${KESTREL_ADMIN_EMAIL:-admin@kestrel.local}
+      KESTREL_ADMIN_PASSWORD: ${KESTREL_ADMIN_PASSWORD:?set KESTREL_ADMIN_PASSWORD in .env}
+      KESTREL_DATA_DIR: /data
+    volumes:
+      - kestrel-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8787/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  kestrel-data:
